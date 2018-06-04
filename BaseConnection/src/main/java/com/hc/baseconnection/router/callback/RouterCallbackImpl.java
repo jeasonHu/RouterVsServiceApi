@@ -1,5 +1,6 @@
 package com.hc.baseconnection.router.callback;
 
+
 public abstract class RouterCallbackImpl {
 
     protected abstract void onCallback(String flag, Object... respData);

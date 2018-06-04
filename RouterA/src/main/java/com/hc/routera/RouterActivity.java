@@ -5,10 +5,16 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import com.hc.baseconnection.Test.User;
 import com.hc.baseconnection.router.Request.RouterRequest;
 import com.hc.baseconnection.router.RouterName;
 import com.hc.baseconnection.router.callback.RouterCallback;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class RouterActivity extends AppCompatActivity {
     public static final String TAG = "RouterActivity";
@@ -22,7 +28,7 @@ public class RouterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    RouterRequest request = RouterRequest.getBuilder()
+                    RouterRequest request = RouterRequest.getBuilder(RouterActivity.this)
                             .provider(RouterName.Provider_Test)
                             .action(RouterName.Action_Test)
                             .data(RouterActivity.this)
@@ -45,7 +51,7 @@ public class RouterActivity extends AppCompatActivity {
         findViewById(R.id.btn_action_callback).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                doAction1();
             }
         });
     }
@@ -53,13 +59,21 @@ public class RouterActivity extends AppCompatActivity {
 
     private void doAction1() {
         try {
-            RouterRequest request = RouterRequest.getBuilder()
+
+            List<User> list = new ArrayList<User>();
+            list.add(new User("Test1"));
+            list.add(new User("Test2"));
+            list.add(new User("Test3"));
+            list.add(new User("Test4"));
+
+            RouterRequest request = RouterRequest.getBuilder(RouterActivity.this)
                     .provider(RouterName.Provider_Test)
                     .action(RouterName.Action_Test1)
+                    .data(list)
                     .CallBack(new RouterCallback() {
                         @Override
                         protected void onCallback(String flag, Object... respData) {
-
+                            Toast.makeText(RouterActivity.this, respData[0].toString(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
@@ -84,4 +98,7 @@ public class RouterActivity extends AppCompatActivity {
             Log.i(TAG, "doAction  : " + e.getMessage());
         }
     }
+
+
+
 }

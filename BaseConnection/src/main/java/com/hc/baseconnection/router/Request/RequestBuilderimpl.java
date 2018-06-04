@@ -10,7 +10,7 @@ public interface RequestBuilderimpl {
 
     RequestBuilderimpl action(String key);//设置actionkey
 
-    RequestBuilderimpl data(Object ...requestdata);//设置请求参数  key-value
+    RequestBuilderimpl data(Object[] requestdata);//设置请求参数  key-value
 
     RequestBuilderimpl CallBack(RouterCallback callback);//设置回调
 

@@ -1,6 +1,8 @@
 package com.hc.baseconnection.router;
 
 
+import android.content.Context;
+
 /**
  * 提供方提供 action 类
  *
@@ -22,6 +24,11 @@ public abstract class BaseAction {
     }
 
 
+
+    public String getActionName(){
+        return null;
+    }
+
     /**
      * 标示函数是否是耗时操作
      * 默认不需要耗时操作
@@ -34,5 +41,6 @@ public abstract class BaseAction {
         return false;
     }
 
-    public abstract void invoke(Object... requestData);
+
+    public abstract void invoke(Context context, Object... requestData);
 }

@@ -1,8 +1,8 @@
 package com.hc.baseconnection.router.Request;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-
 
 import com.hc.baseconnection.router.BaseAction;
 import com.hc.baseconnection.router.BaseProvider;
@@ -17,13 +17,17 @@ public class RequestBuilder implements RequestBuilderimpl {
 
     private RouterCallback callback;
     private Object[] requestData;
-
-
     private BaseAction action;
+
+
+    private Context context;
 
     public RequestBuilder() {
     }
 
+    public RequestBuilder(Context context) {
+        this.context = context;
+    }
 
     public RouterCallback getCallback() {
         return callback;
@@ -65,7 +69,7 @@ public class RequestBuilder implements RequestBuilderimpl {
         try {
             action = getAction();
             if (action != null) {
-                return new RouterRequest(action,this);
+                return new RouterRequest(context,action,this);
             } else {
                 throw new Exception("action is not be found!");
             }

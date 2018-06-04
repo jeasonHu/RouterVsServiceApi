@@ -25,7 +25,8 @@ public class ProviderUtils {
 
     public void bindProvider() {
         providers = new HashMap<String, BaseProvider>();
-        providers.put(RouterName.Provider_Test, new TestProvider());
+        BaseProvider provider = new TestProvider();
+        providers.put(provider.getProviderName(), provider);
 
         RouterManager.getInstance().addProvider(providers);
     }

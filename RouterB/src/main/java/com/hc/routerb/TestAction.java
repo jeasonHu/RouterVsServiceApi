@@ -1,5 +1,8 @@
 package com.hc.routerb;
 
+import android.content.Context;
+import android.content.Intent;
+
 import com.hc.baseconnection.router.BaseAction;
 
 public class TestAction extends BaseAction {
@@ -14,8 +17,16 @@ public class TestAction extends BaseAction {
         return super.TimeConsuming();
     }
 
-    @Override
-    public void invoke(Object... requestData) {
 
+
+
+    @Override
+    public String getActionName() {
+        return "TestAction";
+    }
+
+    @Override
+    public void invoke(Context context, Object... requestData) {
+        context.startActivity(new Intent(context, RouterBactivity.class));
     }
 }
