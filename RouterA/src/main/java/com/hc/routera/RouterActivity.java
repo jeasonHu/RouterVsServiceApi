@@ -29,8 +29,8 @@ public class RouterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     RouterRequest request = RouterRequest.getBuilder(RouterActivity.this)
-                            .provider(RouterName.Provider_Test)
-                            .action(RouterName.Action_Test)
+                            .provider("TestProvider")
+                            .action("TestAction")
                             .data(RouterActivity.this)
                             .build();
 
@@ -57,9 +57,9 @@ public class RouterActivity extends AppCompatActivity {
     }
 
 
+
     private void doAction1() {
         try {
-
             List<User> list = new ArrayList<User>();
             list.add(new User("Test1"));
             list.add(new User("Test2"));
@@ -67,8 +67,8 @@ public class RouterActivity extends AppCompatActivity {
             list.add(new User("Test4"));
 
             RouterRequest request = RouterRequest.getBuilder(RouterActivity.this)
-                    .provider(RouterName.Provider_Test)
-                    .action(RouterName.Action_Test1)
+                    .provider("TestProvider")
+                    .action("TestAction1")
                     .data(list)
                     .CallBack(new RouterCallback() {
                         @Override
