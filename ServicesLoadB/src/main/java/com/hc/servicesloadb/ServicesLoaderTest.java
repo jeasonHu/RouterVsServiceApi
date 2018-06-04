@@ -1,22 +1,25 @@
-package com.hc.routerb;
-
-
+package com.hc.servicesloadb;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.hc.baseconnection.Test.User;
-import com.hc.baseconnection.router.BaseActionCallback;
 import com.hc.baseconnection.router.callback.RouterCallback;
+import com.hc.baseconnection.servicesLoader.ActionImpl;
 
 import java.util.List;
 
-
-public class TestAction1 extends BaseActionCallback {
+public class ServicesLoaderTest implements ActionImpl{
 
 
     @Override
-    public String getActionName() {
-        return "TestAction1";
+    public String getName() {
+        return "TestServicesLoader1";
+    }
+
+    @Override
+    public void invoke(Context context, Object... requestData) {
+        context.startActivity(new Intent(context, ServicesBactivity.class));
     }
 
     @Override
@@ -33,5 +36,6 @@ public class TestAction1 extends BaseActionCallback {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 }

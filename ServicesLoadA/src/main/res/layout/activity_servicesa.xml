@@ -8,4 +8,17 @@
         android:layout_height="wrap_content"
         android:text="Hello World!Services A" />
 
+
+    <Button
+        android:id="@+id/btn_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Action_SPI" />
+
+
+    <Button
+        android:id="@+id/btn_action_callback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Action_CallBack_SPI" />
 </LinearLayout>
