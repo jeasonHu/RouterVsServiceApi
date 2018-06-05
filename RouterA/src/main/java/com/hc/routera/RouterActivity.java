@@ -8,9 +8,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.hc.baseconnection.Test.User;
+import com.hc.baseconnection.callback.ConnectionCallback;
 import com.hc.baseconnection.router.Request.RouterRequest;
-import com.hc.baseconnection.router.RouterName;
-import com.hc.baseconnection.router.callback.RouterCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,9 +69,9 @@ public class RouterActivity extends AppCompatActivity {
                     .provider("TestProvider")
                     .action("TestAction1")
                     .data(list)
-                    .CallBack(new RouterCallback() {
+                    .CallBack(new ConnectionCallback() {
                         @Override
-                        protected void onCallback(String flag, Object... respData) {
+                        protected void onCallback(Object flag, Object... respData) {
                             Toast.makeText(RouterActivity.this, respData[0].toString(), Toast.LENGTH_SHORT).show();
                         }
 

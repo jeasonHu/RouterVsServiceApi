@@ -3,7 +3,7 @@ package com.hc.baseconnection.router;
 
 import android.content.Context;
 
-import com.hc.baseconnection.router.callback.RouterCallback;
+import com.hc.baseconnection.callback.ConnectionCallback;
 
 
 /**
@@ -21,5 +21,5 @@ public abstract class BaseActionCallback extends BaseAction {
         invoke(context,null, requestData);
     }
 
-    public abstract void invoke(Context context, RouterCallback callback, Object... requestData);
+    public abstract void invoke(Context context, ConnectionCallback callback, Object... requestData);
 }

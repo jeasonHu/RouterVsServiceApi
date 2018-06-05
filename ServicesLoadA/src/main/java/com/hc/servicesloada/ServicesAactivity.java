@@ -7,13 +7,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.hc.baseconnection.Test.User;
-import com.hc.baseconnection.router.callback.RouterCallback;
-import com.hc.baseconnection.servicesLoader.ActionImpl;
+import com.hc.baseconnection.callback.ConnectionCallback;
+import com.hc.baseconnection.servicesLoader.MyServicesLoader;
+import com.hc.baseconnection.servicesLoader.ServicesActionImpl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ServiceLoader;
 
 
 public class ServicesAactivity extends AppCompatActivity {
@@ -40,34 +39,45 @@ public class ServicesAactivity extends AppCompatActivity {
     }
 
     private void loadSpi(){
-        ServiceLoader<ActionImpl> loader = ServiceLoader.load(ActionImpl.class);
-        Iterator<ActionImpl> mIterator = loader.iterator();
-        ActionImpl action = null;
-        while (mIterator.hasNext()){
-            action = mIterator.next();
-            if(action.getName().equals("TestServicesLoader1")){
-                action.invoke(ServicesAactivity.this);
-            }
-        }
-
+        MyServicesLoader.doAction(ServicesAactivity.this,ServicesActionImpl.class,"TestServicesLoader2",null);
     }
 
     private void loadSpi2(){
-        ServiceLoader<ActionImpl> loader = ServiceLoader.load(ActionImpl.class);
-        Iterator<ActionImpl> mIterator = loader.iterator();
-        ActionImpl action = null;
+        List<User> list = new ArrayList<User>();
+        list.add(new User("Test1"));
+        list.add(new User("Test2"));
+        list.add(new User("Test3"));
+        list.add(new User("Test4"));
+
+
+        MyServicesLoader.doAction(ServicesAactivity.this, ServicesActionImpl.class, "TestServicesLoader", new ConnectionCallback() {
+            @Override
+            protected void onCallback(Object flag, Object... respData) {
+                Toast.makeText(ServicesAactivity.this, respData[0].toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void Error(String e) {
+                Toast.makeText(ServicesAactivity.this, e, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onComplete() {
+                Toast.makeText(ServicesAactivity.this, "onComplete", Toast.LENGTH_SHORT).show();
+            }
+        },list);
+
+        /*ServiceLoader<ServicesActionImpl> loader = ServiceLoader.load(ServicesActionImpl.class);
+        Iterator<ServicesActionImpl> mIterator = loader.iterator();
+        ServicesActionImpl action = null;
         while (mIterator.hasNext()){
             action = mIterator.next();
-            if(action.getName().equals("TestServicesLoader1")){
+            if(action.getName().equals("TestServicesLoader")){
 
-                List<User> list = new ArrayList<User>();
-                list.add(new User("Test1"));
-                list.add(new User("Test2"));
-                list.add(new User("Test3"));
-                list.add(new User("Test4"));
-                action.invoke(ServicesAactivity.this,new RouterCallback() {
+
+                action.invoke(ServicesAactivity.this,new ConnectionCallback() {
                     @Override
-                    protected void onCallback(String flag, Object... respData) {
+                    protected void onCallback(Object flag, Object... respData) {
                         Toast.makeText(ServicesAactivity.this, respData[0].toString(), Toast.LENGTH_SHORT).show();
                     }
 
@@ -82,6 +92,6 @@ public class ServicesAactivity extends AppCompatActivity {
                     }
                 }, list);
             }
-        }
+        }*/
     }
 }

@@ -4,10 +4,10 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
+import com.hc.baseconnection.callback.ConnectionCallback;
 import com.hc.baseconnection.router.BaseAction;
 import com.hc.baseconnection.router.BaseProvider;
 import com.hc.baseconnection.router.Router.RouterManager;
-import com.hc.baseconnection.router.callback.RouterCallback;
 
 
 public class RequestBuilder implements RequestBuilderimpl {
@@ -15,7 +15,7 @@ public class RequestBuilder implements RequestBuilderimpl {
     private String providerKey;
     private String actionkey;
 
-    private RouterCallback callback;
+    private ConnectionCallback callback;
     private Object[] requestData;
     private BaseAction action;
 
@@ -29,7 +29,7 @@ public class RequestBuilder implements RequestBuilderimpl {
         this.context = context;
     }
 
-    public RouterCallback getCallback() {
+    public ConnectionCallback getCallback() {
         return callback;
     }
 
@@ -59,7 +59,7 @@ public class RequestBuilder implements RequestBuilderimpl {
     }
 
     @Override
-    public RequestBuilder CallBack(RouterCallback callback) {
+    public RequestBuilder CallBack(ConnectionCallback callback) {
         this.callback = callback;
         return this;
     }

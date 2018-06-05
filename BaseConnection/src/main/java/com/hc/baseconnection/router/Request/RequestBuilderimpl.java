@@ -1,7 +1,7 @@
 package com.hc.baseconnection.router.Request;
 
 
-import com.hc.baseconnection.router.callback.RouterCallback;
+import com.hc.baseconnection.callback.ConnectionCallback;
 
 public interface RequestBuilderimpl {
 
@@ -12,7 +12,7 @@ public interface RequestBuilderimpl {
 
     RequestBuilderimpl data(Object[] requestdata);//设置请求参数  key-value
 
-    RequestBuilderimpl CallBack(RouterCallback callback);//设置回调
+    RequestBuilderimpl CallBack(ConnectionCallback callback);//设置回调
 
     RouterRequest build() throws Exception;//构建Request
 

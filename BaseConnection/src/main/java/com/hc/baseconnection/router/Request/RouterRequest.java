@@ -3,9 +3,9 @@ package com.hc.baseconnection.router.Request;
 
 import android.content.Context;
 
+import com.hc.baseconnection.callback.ConnectionCallback;
 import com.hc.baseconnection.router.BaseAction;
 import com.hc.baseconnection.router.BaseActionCallback;
-import com.hc.baseconnection.router.callback.RouterCallback;
 
 
 public class RouterRequest implements RequestImpl {
@@ -40,9 +40,9 @@ public class RouterRequest implements RequestImpl {
             if (action != null && builder != null) {
                 if(action instanceof BaseActionCallback){
                     if(builder.getCallback() == null){
-                        ((BaseActionCallback)action).invoke(context,new RouterCallback() {
+                        ((BaseActionCallback)action).invoke(context,new ConnectionCallback() {
                             @Override
-                            protected void onCallback(String flag, Object... respData) {
+                            protected void onCallback(Object flag, Object... respData) {
 
                             }
 

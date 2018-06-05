@@ -1,29 +1,24 @@
 package com.hc.servicesloadb;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.hc.baseconnection.Test.User;
-import com.hc.baseconnection.router.callback.RouterCallback;
-import com.hc.baseconnection.servicesLoader.ActionImpl;
+import com.hc.baseconnection.callback.ConnectionCallback;
+import com.hc.baseconnection.servicesLoader.ServicesActionImpl;
 
 import java.util.List;
 
-public class ServicesLoaderTest implements ActionImpl{
+public class ServicesLoaderTest implements ServicesActionImpl {
 
 
     @Override
     public String getName() {
-        return "TestServicesLoader1";
+        return "TestServicesLoader";
     }
 
-    @Override
-    public void invoke(Context context, Object... requestData) {
-        context.startActivity(new Intent(context, ServicesBactivity.class));
-    }
 
     @Override
-    public void invoke(Context context, RouterCallback callback, Object... requestData) {
+    public void invoke(Context context, ConnectionCallback callback, Object... requestData) {
         try {
             //String param = (String) requestData[1];
             //String msg = (String) requestData[1];
