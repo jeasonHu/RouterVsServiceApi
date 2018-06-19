@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.hc.baseconnection.Test.User;
 import com.hc.baseconnection.callback.ConnectionCallback;
 import com.hc.baseconnection.router.Request.RouterRequest;
+import com.hyx.sdyx.apt.annotation.Action;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,5 +100,10 @@ public class RouterActivity extends AppCompatActivity {
     }
 
 
+
+    @Action("hehe")
+    private void test(){
+
+    }
 
 }

@@ -1,6 +1,5 @@
 package com.hc.routervsserviceapi;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,8 +12,7 @@ import com.hc.baseconnection.callback.ConnectionCallback;
 import com.hc.baseconnection.router.Request.RouterRequest;
 import com.hc.baseconnection.servicesLoader.MyServicesLoader;
 import com.hc.baseconnection.servicesLoader.ServicesActionImpl;
-import com.hc.routera.RouterActivity;
-import com.hc.servicesloada.ServicesAactivity;
+import com.hyx.sdyx.apt.annotation.Action;
 
 import java.util.ArrayList;
 import java.util.List;
